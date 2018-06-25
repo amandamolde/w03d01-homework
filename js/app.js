@@ -10,7 +10,8 @@ $('document').ready(function () {
 		}
 	};
 
-
+const pet = new Tomagotchi(1, 1, 1, 1);
+console.log(pet, ' this is my Tomagotchi');
 
 
 })
