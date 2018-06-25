@@ -3,15 +3,30 @@ $('document').ready(function () {
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
-			this.hunger = 1;
-			this.sleepiness = 1;
-			this.boredom = 1;
-			this.age = 1;
+			this.hunger = hunger;
+			this.sleepiness = sleepiness;
+			this.boredom = boredom;
+			this.age = age;
 		}
 	};
 
-const pet = new Tomagotchi(1, 1, 1, 1);
-console.log(pet, ' this is my Tomagotchi');
+	// console.log(Tomagotchi);
 
+const pet = new Tomagotchi(1, 1, 1, 1);
+// console.log(pet, ' this is my Tomagotchi');
+
+let hunger = 1;
+let sleepiness = 1;
+let boredom = 1;
+let age = 1;
+
+const displayMetrics = () => {
+	$('#hunger').text('Hunger: ' + hunger);
+	$('#sleepiness').text('Sleepiness: ' + sleepiness);
+	$('#boredom').text('Boredom: ' + boredom);
+	$('#age').text('Age: ' + age);
+};
+
+displayMetrics();
 
 })
