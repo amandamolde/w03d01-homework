@@ -5,6 +5,7 @@ $('document').ready(function () {
 	let boredom = 1;
 	let age = 1;
 	let time = 0;
+	let lightToggle = false;
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -38,25 +39,10 @@ $('document').ready(function () {
 
 
 // ///////TURN OFF LIGHTS///////
-	// $('#lights').on('click', (e) => {
-	// 	$('img').toggleClass('lightsOff',true);
-	// 	$('#lights').text('Wake Me Up');
-
-	// 	$('#lights').off().on('click', (e) => {
-	// 		$('img').toggleClass('lightsOff', false);
-	// 		$('#lights').text('Turn Lights Off');
-	// 	})
-	// 	if (sleepiness > 1) {
-	// 		sleepiness --;
-	// 		$('#sleepiness').text('Sleepiness: ' + sleepiness);
-	// 		// $('img').toggleClass('lightsOff',true);
-	// 		// $('#lights').text('Wake Me Up');
-	// 		// NEED TO TOGGLE CLASS HERE SO COLOR TURNS OFF
-	// 	}
-	// });
-
-	$('#lights').on('click', (e) => {
+	$('#lightsOff').on('click', (e) => {
 		$('img').detach();
+		$('.buttons').detach();
+
 		const darkRoom = $('<div class="darkRoom"></div>');
 		$('section').append(darkRoom);
 
@@ -66,7 +52,13 @@ $('document').ready(function () {
 				$('#sleepiness').text('Sleepiness: ' + sleepiness);
 			}, 5*1000);
 		}
+		$('body').append('<button id="lightsOn">Wake Me Up</button>');
 	});
+
+	// ///////WAKE ME UP///////
+	$('#lightsOn').on('click', (e) => {
+		console.log('click')
+	})
 
 
 // ///////PLAY WITH PET///////
@@ -85,7 +77,7 @@ $('document').ready(function () {
 		const $name = $('<h1/>').text($nameInput);
 		$('body').prepend($name);
 		displayMetrics();
-		startTimers();
+		startGame();
 	});
 
 	// Increase time every one second
@@ -129,7 +121,7 @@ $('document').ready(function () {
 	};
 
 
-	const startTimers = () => {
+	const startGame = () => {
 		timePassing();
 		increaseAge();
 		increaseHunger();
