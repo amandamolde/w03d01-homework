@@ -3,6 +3,7 @@ $('document').ready(function () {
 	let seconds = 0;
 	let lightToggle = false;
 	$('.darkRoom').hide();
+	$('.deadPet').hide();
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -16,18 +17,14 @@ $('document').ready(function () {
 
 	const pet = new Tomagotchi(1, 1, 1, 1);
 
-// ///////////////////NAME PET///////////////////
-	$('#submitName').on('click', (e) => {
-		const $nameInput = $('input').val();
-		$(e.currentTarget).parent().remove();
-		const $name = $('<h1/>').text($nameInput);
-		$('body').prepend($name);
-	});
-
-
 
 // //////////TIMER AND INCREASE METRICS//////////
 $('#submitName').on('click', (e) => {
+
+	const $nameInput = $('input').val();
+	$(e.currentTarget).parent().remove();
+	const $name = $('<h1/>').text($nameInput);
+	$('body').prepend($name);
 
 	const timePassing = () => {
 		$('#time').text('Time: ' + seconds + ' s');
@@ -58,7 +55,9 @@ $('#submitName').on('click', (e) => {
 			console.log(`Pet age increased at ${seconds}`);
 		}
 
-		if (pet.hunger > 10 || pet.boredom > 10 || pet.sleepiness > 10) {
+		if (pet.hunger >= 10 || pet.boredom >= 10 || pet.sleepiness >= 10) {
+			$('.deadPet').show();
+			$('.livePet').hide();
 			console.log('Pet has died')
 			clearInterval(timePasses);
 		}
@@ -81,7 +80,7 @@ const timePasses = setInterval(timePassing, 1000);
 // //////////////TURN OFF LIGHTS//////////////
 	$('#lights').on('click', (e) => {
 		if (lightToggle === false) {
-			$('img').hide();
+			$('.livePet').hide();
 			$('#feed').hide();
 			$('#play').hide();
 			$('.darkRoom').show();
@@ -96,7 +95,7 @@ const timePasses = setInterval(timePassing, 1000);
 			lightToggle = true;
 
 		} else {
-			$('img').show();
+			$('.livePet').show();
 			$('#feed').show();
 			$('#play').show();
 			$('#lights').text("Turn Lights Off");
