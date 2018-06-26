@@ -1,5 +1,4 @@
 $('document').ready(function () {
-	// console.log('working');
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -10,12 +9,10 @@ $('document').ready(function () {
 		}
 	};
 
-	// console.log(Tomagotchi);
 
 const pet = new Tomagotchi(1, 1, 1, 1);
-// console.log(pet, ' this is my Tomagotchi');
 
-let hunger = 6;
+let hunger = 8;
 let sleepiness = 4;
 let boredom = 10;
 let age = 6;
@@ -28,26 +25,23 @@ const displayMetrics = () => {
 };
 
 $('#feed').on('click', (e) => {
-	// console.log('feed clicked')
 	if(hunger > 1) {
 		hunger --;
-		// console.log(hunger);
+		$('#hunger').text('Hunger: ' + hunger);
 	}
 });
 
 $('#lights').on('click', (e) => {
-	// console.log('lights clicked')
 	if (sleepiness > 1) {
 		sleepiness --;
-		// console.log(sleepiness);
+		$('#sleepiness').text('Sleepiness: ' + sleepiness);
 	}
 });
 
 $('#play').on('click', (e) => {
-	// console.log('play clicked')
 	if (boredom > 1) {
 		boredom --;
-		// console.log(boredom);
+		$('#boredom').text('Boredom: ' + boredom);
 	}
 });
 
