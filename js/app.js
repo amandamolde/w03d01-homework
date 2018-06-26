@@ -18,15 +18,15 @@ $('document').ready(function () {
 	};
 
 
-	const pet = new Tomagotchi();
+	const pet = new Tomagotchi(1, 1, 1, 1);
 
 
 
 	const displayMetrics = () => {
-		$('#hunger').text('Hunger: ' + hunger);
-		$('#sleepiness').text('Sleepiness: ' + sleepiness);
-		$('#boredom').text('Boredom: ' + boredom);
-		$('#age').text('Age: ' + age);
+		$('#hungerMetric').text('Hunger: ' + hunger);
+		$('#sleepinessMetric').text('Sleepiness: ' + sleepiness);
+		$('#boredomMetric').text('Boredom: ' + boredom);
+		$('#ageMetric').text('Age: ' + age);
 	};
 
 	
@@ -34,7 +34,7 @@ $('document').ready(function () {
 	$('#feed').on('click', (e) => {
 		if(hunger > 1) {
 			hunger --;
-			$('#hunger').text('Hunger: ' + hunger);
+			$('#hungerMetric').text('Hunger: ' + hunger);
 		}
 	});
 
@@ -48,14 +48,10 @@ $('document').ready(function () {
 			$('.darkRoom').show();
 			$('#lights').text("Wake Me Up")
 
-			// const darkRoom = $('<div class="darkRoom"></div>');
-			// $('section').append(darkRoom);
-
 			decreaseSleepiness();
 
 			lightToggle = true;
 
-			console.log(lightToggle);
 		} else {
 			$('img').show();
 			$('#feed').show();
@@ -70,7 +66,7 @@ const decreaseSleepiness = () => {
 	if (sleepiness > 1) {
 		setInterval(function () {
 			sleepiness --;
-			$('#sleepiness').text('Sleepiness: ' + sleepiness);
+			$('#sleepinessMetric').text('Sleepiness: ' + sleepiness);
 		}, 5*1000);
 	}
 };
@@ -85,7 +81,7 @@ const decreaseSleepiness = () => {
 	$('#play').on('click', (e) => {
 		if (boredom > 1) {
 			boredom --;
-			$('#boredom').text('Boredom: ' + boredom);
+			$('#boredomMetric').text('Boredom: ' + boredom);
 		}
 	});
 
@@ -112,7 +108,7 @@ const decreaseSleepiness = () => {
 	const increaseAge = () => {
 		setInterval(function () {
 			age ++;
-			$('#age').text('Age: ' + age);
+			$('#ageMetric').text('Age: ' + age);
 		}, 30*1000);
 	};
 
@@ -120,15 +116,15 @@ const decreaseSleepiness = () => {
 	const increaseHunger = () => {
 		setInterval(function () {
 			hunger ++;
-			$('#hunger').text('Hunger: ' + hunger);
-		}, 5*1000);
+			$('#hungerMetric').text('Hunger: ' + hunger);
+		}, 1*1000);
 	};
 
 // Sleepiness increases every 10 seconds
 	const increaseSleepiness = () => {
 		setInterval(function () {
 			sleepiness ++;
-			$('#sleepiness').text('Sleepiness: ' + sleepiness);
+			$('#sleepinessMetric').text('Sleepiness: ' + sleepiness);
 		}, 10*1000);
 	};
 
@@ -136,7 +132,7 @@ const decreaseSleepiness = () => {
 	const increaseBoredom = () => {
 		setInterval(function () {
 			boredom ++;
-			$('#boredom').text('Boredom: ' + boredom);
+			$('#boredomMetric').text('Boredom: ' + boredom);
 		}, 15*1000);
 	};
 
@@ -147,13 +143,14 @@ const decreaseSleepiness = () => {
 		increaseHunger();
 		increaseSleepiness();
 		increaseBoredom();
+		petDies();
 	};
 
-	// const petDies = () => {
-	// 	if (hunger === 10) {
-	// 		alert('Your pet has died');
-	// 	}
-	// };
+	const petDies = () => {
+		if (hunger === 10 || sleepiness === 10 || boredom === 10) {
+			console.log('Your pet has died');
+		}
+	};
 
 	// petDies();
 
