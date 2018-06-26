@@ -17,6 +17,9 @@ $('document').ready(function () {
 	const pet = new Tomagotchi(1, 1, 1, 1);
 
 
+	const 
+
+
 
 	const displayMetrics = () => {
 		$('#hunger').text('Hunger: ' + pet.hunger);
@@ -89,7 +92,7 @@ const decreaseSleepiness = () => {
 
 	// Increase time every one second
 	const timePassing = () => {
-		setInterval(function () {
+		const gameTimer = setInterval(function () {
 			time ++;
 			$('#time').text('Time: ' + time + ' s');
 		}, 1*1000);
@@ -97,7 +100,7 @@ const decreaseSleepiness = () => {
 
 // Age increases every 30 seconds
 	const increaseAge = () => {
-		setInterval(function () {
+		const ageTimer = setInterval(function () {
 			pet.age ++;
 			$('#age').text('Age: ' + pet.age);
 		}, 30*1000);
@@ -105,24 +108,30 @@ const decreaseSleepiness = () => {
 
 // Hunger increases every 5 seconds
 	const increaseHunger = () => {
-		setInterval(function () {
+		const hungerTimer = setInterval(function () {
 			pet.hunger ++;
+			if(pet.hunger = 10) {
+				clearInterval(hungerTimer);
+			}
+			checkIfPetDies(hungerTimer);
 			$('#hunger').text('Hunger: ' + pet.hunger);
 		}, 1*1000);
 	};
 
 // Sleepiness increases every 10 seconds
 	const increaseSleepiness = () => {
-		setInterval(function () {
+		const sleepinessTimer = setInterval(function () {
 			pet.sleepiness ++;
+			checkIfPetDies();
 			$('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
 		}, 10*1000);
 	};
 
 // Boredome increases every 15 seconds
 	const increaseBoredom = () => {
-		setInterval(function () {
+		const boredomTimer = setInterval(function () {
 			pet.boredom ++;
+			checkIfPetDies();
 			$('#boredom').text('Boredom: ' + pet.boredom);
 		}, 5*1000);
 	};
@@ -134,15 +143,21 @@ const decreaseSleepiness = () => {
 		increaseHunger();
 		increaseSleepiness();
 		increaseBoredom();
-		// petDies();
 	};
 
-	// const petDies = () => {
-	// 	if (hunger === 10 || sleepiness === 10 || boredom === 10) {
-	// 		console.log('Your pet has died');
-	// 	}
-	// };
+	const stopTimers =() => {
+		clearInterval(gameTimer);
+		clearInterval(ageTimer);
+		clearInterval(hungerTimer);
+		clearInterval(sleepinessTimer);
+		clearInterval(boredomTimer);
+	};
 
-	// petDies();
+	const checkIfPetDies = (timerName) => {
+		if (pet.hunger === 10 || pet.sleepiness === 10 || pet.boredom === 10) {
+			console.log('Your pet has died');
+			clearInterval(time)
+		}
+	};
 
 })
