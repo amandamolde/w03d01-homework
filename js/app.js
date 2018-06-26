@@ -1,5 +1,10 @@
 $('document').ready(function () {
 
+	let hunger = 9;
+	let sleepiness = 4;
+	let boredom = 9;
+	let age = 6;
+
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
 			this.hunger = hunger;
@@ -12,10 +17,7 @@ $('document').ready(function () {
 
 	const pet = new Tomagotchi(1, 1, 1, 1);
 
-	let hunger = 8;
-	let sleepiness = 4;
-	let boredom = 10;
-	let age = 6;
+
 
 	const displayMetrics = () => {
 		$('#hunger').text('Hunger: ' + hunger);
@@ -51,6 +53,8 @@ $('document').ready(function () {
 		$(e.currentTarget).parent().remove();
 		const $name = $('<h1/>').text($nameInput);
 		$('body').prepend($name);
+		displayMetrics();
+		startTimers();
 	});
 
 	const increaseAge = () => {
@@ -82,11 +86,20 @@ $('document').ready(function () {
 		}, 15000);
 	};
 
+	const startTimers = () => {
+		increaseAge();
+		increaseAge();
+		increaseHunger();
+		increaseSleepiness();
+		increaseBoredom();
+	};
 
-	displayMetrics();
-	increaseAge();
-	increaseHunger();
-	increaseSleepiness();
-	increaseBoredom();
+	// const petDies = () => {
+	// 	if (hunger === 10) {
+	// 		alert('Your pet has died');
+	// 	}
+	// };
+
+	// petDies();
 
 })
