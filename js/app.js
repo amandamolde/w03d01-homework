@@ -45,6 +45,13 @@ $('#play').on('click', (e) => {
 	}
 });
 
+$('#submitName').on('click', (e) => {
+	const $nameInput = $('input').val();
+	$(e.currentTarget).parent().remove();
+	const $name = $('<h1/>').text($nameInput);
+	$('body').prepend($name);
+})
+
 displayMetrics();
 
 })
