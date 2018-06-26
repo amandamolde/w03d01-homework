@@ -6,6 +6,7 @@ $('document').ready(function () {
 	let age = 1;
 	let time = 0;
 	let lightToggle = false;
+	$('.darkRoom').hide();
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -39,21 +40,40 @@ $('document').ready(function () {
 
 
 // ///////TURN OFF LIGHTS///////
-	$('#lightsOff').on('click', (e) => {
-		$('img').detach();
-		$('.buttons').detach();
+	$('#lights').on('click', (e) => {
+		if (lightToggle === false) {
+			$('img').hide();
+			$('#feed').hide();
+			$('#play').hide();
+			$('.darkRoom').show();
+			$('#lights').text("Wake Me Up")
 
-		const darkRoom = $('<div class="darkRoom"></div>');
-		$('section').append(darkRoom);
+			// const darkRoom = $('<div class="darkRoom"></div>');
+			// $('section').append(darkRoom);
 
-		if (sleepiness > 1) {
-			setInterval(function () {
-				sleepiness --;
-				$('#sleepiness').text('Sleepiness: ' + sleepiness);
-			}, 5*1000);
+			decreaseSleepiness();
+
+			lightToggle = true;
+
+			console.log(lightToggle);
+		} else {
+			$('img').show();
+			$('#feed').show();
+			$('#play').show();
+			$('#lights').text("Turn Lights Off");
+			$('.darkRoom').hide();
+			lightToggle = false;
 		}
-		$('body').append('<button id="lightsOn">Wake Me Up</button>');
 	});
+
+const decreaseSleepiness = () => {
+	if (sleepiness > 1) {
+		setInterval(function () {
+			sleepiness --;
+			$('#sleepiness').text('Sleepiness: ' + sleepiness);
+		}, 5*1000);
+	}
+};
 
 	// ///////WAKE ME UP///////
 	$('#lightsOn').on('click', (e) => {
