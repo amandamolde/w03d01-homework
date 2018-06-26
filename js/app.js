@@ -1,9 +1,10 @@
 $('document').ready(function () {
 
-	let hunger = 9;
-	let sleepiness = 4;
-	let boredom = 9;
-	let age = 6;
+	let hunger = 1;
+	let sleepiness = 1;
+	let boredom = 1;
+	let age = 1;
+	let time = 0;
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -57,11 +58,14 @@ $('document').ready(function () {
 	$('#lights').on('click', (e) => {
 		$('img').detach();
 		const darkRoom = $('<div class="darkRoom"></div>');
-		// darkRoom.appendTo('#image');
 		$('section').append(darkRoom);
 
-
-		// $('<div></div>').addClass('.darkRoom).appendTo('#image');
+		if (sleepiness > 1) {
+			setInterval(function () {
+				sleepiness --;
+				$('#sleepiness').text('Sleepiness: ' + sleepiness);
+			}, 5*1000);
+		}
 	});
 
 
@@ -84,41 +88,49 @@ $('document').ready(function () {
 		startTimers();
 	});
 
+	// Increase time every one second
+	const timePassing = () => {
+		setInterval(function () {
+			time ++;
+			$('#time').text('Time: ' + time + ' s');
+		}, 1*1000);
+	};
 
+// Age increases every 30 seconds
 	const increaseAge = () => {
 		setInterval(function () {
 			age ++;
 			$('#age').text('Age: ' + age);
-		}, 120000);
+		}, 30*1000);
 	};
 
-
+// Hunger increases every 5 seconds
 	const increaseHunger = () => {
 		setInterval(function () {
 			hunger ++;
 			$('#hunger').text('Hunger: ' + hunger);
-		}, 20000);
+		}, 5*1000);
 	};
 
-
+// Sleepiness increases every 10 seconds
 	const increaseSleepiness = () => {
 		setInterval(function () {
 			sleepiness ++;
 			$('#sleepiness').text('Sleepiness: ' + sleepiness);
-		}, 60000);
+		}, 10*1000);
 	};
 
-
+// Boredome increases every 15 seconds
 	const increaseBoredom = () => {
 		setInterval(function () {
 			boredom ++;
 			$('#boredom').text('Boredom: ' + boredom);
-		}, 15000);
+		}, 15*1000);
 	};
 
 
 	const startTimers = () => {
-		increaseAge();
+		timePassing();
 		increaseAge();
 		increaseHunger();
 		increaseSleepiness();
