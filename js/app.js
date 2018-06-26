@@ -57,11 +57,36 @@ $('document').ready(function () {
 		setInterval(function () {
 			age ++;
 			$('#age').text('Age: ' + age);
+		}, 120000);
+	};
+
+
+	const increaseHunger = () => {
+		setInterval(function () {
+			hunger ++;
+			$('#hunger').text('Hunger: ' + hunger);
+		}, 20000);
+	};
+
+	const increaseSleepiness = () => {
+		setInterval(function () {
+			sleepiness ++;
+			$('#sleepiness').text('Sleepiness: ' + sleepiness);
 		}, 60000);
 	};
-	
+
+	const increaseBoredom = () => {
+		setInterval(function () {
+			boredom ++;
+			$('#boredom').text('Boredom: ' + boredom);
+		}, 15000);
+	};
+
 
 	displayMetrics();
 	increaseAge();
+	increaseHunger();
+	increaseSleepiness();
+	increaseBoredom();
 
 })
