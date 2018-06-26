@@ -7,15 +7,15 @@ $('document').ready(function () {
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
-			this.hunger = hunger;
-			this.sleepiness = sleepiness;
-			this.boredom = boredom;
-			this.age = age;
+			this.hunger = 1;
+			this.sleepiness = 1;
+			this.boredom = 1;
+			this.age = 1;
 		}
 	};
 
 
-	const pet = new Tomagotchi(1, 1, 1, 1);
+	const pet = new Tomagotchi();
 
 
 
@@ -26,6 +26,8 @@ $('document').ready(function () {
 		$('#age').text('Age: ' + age);
 	};
 
+	
+// //////////FEED PET//////////
 	$('#feed').on('click', (e) => {
 		if(hunger > 1) {
 			hunger --;
@@ -33,13 +35,37 @@ $('document').ready(function () {
 		}
 	});
 
+
+// ///////TURN OFF LIGHTS///////
+	// $('#lights').on('click', (e) => {
+	// 	$('img').toggleClass('lightsOff',true);
+	// 	$('#lights').text('Wake Me Up');
+
+	// 	$('#lights').off().on('click', (e) => {
+	// 		$('img').toggleClass('lightsOff', false);
+	// 		$('#lights').text('Turn Lights Off');
+	// 	})
+	// 	if (sleepiness > 1) {
+	// 		sleepiness --;
+	// 		$('#sleepiness').text('Sleepiness: ' + sleepiness);
+	// 		// $('img').toggleClass('lightsOff',true);
+	// 		// $('#lights').text('Wake Me Up');
+	// 		// NEED TO TOGGLE CLASS HERE SO COLOR TURNS OFF
+	// 	}
+	// });
+
 	$('#lights').on('click', (e) => {
-		if (sleepiness > 1) {
-			sleepiness --;
-			$('#sleepiness').text('Sleepiness: ' + sleepiness);
-		}
+		$('img').detach();
+		const darkRoom = $('<div class="darkRoom"></div>');
+		// darkRoom.appendTo('#image');
+		$('section').append(darkRoom);
+
+
+		// $('<div></div>').addClass('.darkRoom).appendTo('#image');
 	});
 
+
+// ///////PLAY WITH PET///////
 	$('#play').on('click', (e) => {
 		if (boredom > 1) {
 			boredom --;
@@ -48,6 +74,7 @@ $('document').ready(function () {
 	});
 
 
+// //////////NAME PET//////////
 	$('#submitName').on('click', (e) => {
 		const $nameInput = $('input').val();
 		$(e.currentTarget).parent().remove();
@@ -56,6 +83,7 @@ $('document').ready(function () {
 		displayMetrics();
 		startTimers();
 	});
+
 
 	const increaseAge = () => {
 		setInterval(function () {
@@ -72,6 +100,7 @@ $('document').ready(function () {
 		}, 20000);
 	};
 
+
 	const increaseSleepiness = () => {
 		setInterval(function () {
 			sleepiness ++;
@@ -79,12 +108,14 @@ $('document').ready(function () {
 		}, 60000);
 	};
 
+
 	const increaseBoredom = () => {
 		setInterval(function () {
 			boredom ++;
 			$('#boredom').text('Boredom: ' + boredom);
 		}, 15000);
 	};
+
 
 	const startTimers = () => {
 		increaseAge();

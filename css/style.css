@@ -12,3 +12,12 @@ input {
 	font-size: 20px;
 	padding: 2px;
 }
+.darkRoom {
+	background-color: black;
+	width: 280px;
+	height: 280px;
+	margin: 0 auto;
+}
+.img {
+	margin: 0 auto;
+}
