@@ -1,3 +1,18 @@
+$('document').ready(function () {
+
+	class Tomagotchi {
+		constructor(hunger, sleepiness, boredom, age){
+			this.hunger = 1;
+			this.sleepiness = 1;
+			this.boredom = 1;
+			this.age = 1;
+		}
+	};
+
+
+	const pet = new Tomagotchi(1, 1, 1, 1);
+
+
 let seconds = 0;
 
 const timePassing = () => {
@@ -16,3 +31,15 @@ const timePassing = () => {
 }
 
 const timePasses = setInterval(timePassing, 1000);
+
+
+
+
+
+
+
+
+
+
+})
+
