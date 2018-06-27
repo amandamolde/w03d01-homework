@@ -50,7 +50,7 @@ $('#submitName').on('click', (e) => {
 			console.log(`Pet boredom increased at ${seconds}`);
 		}
 
-		if (seconds % 3 == 0) {
+		if (seconds % 30 == 0) {
 			pet.age ++;
 			$('#age').text('Age: ' + pet.age);
 			console.log(`Pet age increased at ${seconds}`);

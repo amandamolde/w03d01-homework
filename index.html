@@ -1,47 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
 	<title>Tomagotchi</title>
+
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
 </head>
 <body>
-	<section>
-		<img class="livePet" src="images/baby.png">
-		<div class="darkRoom"></div>
-		<img class="deadPet" src="images/dead.jpg">
-	</section>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<section>
+					<img class="livePet" src="images/baby.png">
+					<div class="darkRoom"></div>
+					<img class="deadPet" src="images/dead.jpg">
+				</section>
+			</div>
+		</div>
 
-	<div class="name">
-		<h2>Name Your Pet</h2>
-		<input type="text">
-		<button id="submitName">Submit</button>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="name">
+					<h2>Name Your Pet</h2>
+					<input type="text">
+					<button id="submitName">Submit</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="timer">
+					<h2 id="time">Time: 0 s</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="metrics">
+					<h2 id="hunger">Hunger: 1</h2>
+					<h2 id="sleepiness">Sleepiness: 1</h2>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="metrics">
+					<h2 id="boredom">Boredom: 1</h2>
+					<h2 id="age">Age: 1</h2>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="buttons">
+					<button id="feed">Feed Me</button>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="buttons">
+					<button id="lights">Turn Off the Lights</button>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="buttons">
+					<button id="play">Play with Me</button>
+				</div>
+			</div>
+
+			<div class="col-sm-4">
+				<div class="playAgain">
+					<button id="reset">Play Again?</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div class="timer">
-		<h2 id="time">Time: 0 s</h2>
-	</div>
 
-	<div class="metrics">
-		<h2 id="hunger">Hunger: 1</h2>
-		<h2 id="sleepiness">Sleepiness: 1</h2>
-		<h2 id="boredom">Boredom: 1</h2>
-		<h2 id="age">Age: 1</h2>
-	</div>
-
-	<div class="buttons">
-		<button id="feed">Feed Me</button>
-		<button id="lights">Turn Off the Lights</button>
-		<button id="play">Play with Me</button>
-	</div>
-
-	<div class="playAgain">
-		<button id="reset">Play Again?</button>
-	</div>
-
-
-
-
-<script type="text/javascript" src="js/app2.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/app2.js"></script>
 </body>
 </html>
