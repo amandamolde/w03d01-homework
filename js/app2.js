@@ -64,7 +64,7 @@ $('form').on('submit', (e) => {
 			$('.darkRoom').hide();
 			console.log('Pet has died');
 			clearInterval(timePasses);
-			let deadMessage = $('<h1/>').text("Your Tomagotchi has died").css('color', 'red')
+			let deadMessage = $('<h1/>').text(`${$nameInput} has died`).css('color', 'red')
 			$(deadMessage).appendTo('section');
 			$('.buttons').hide();
 			$('.playAgain').show();
