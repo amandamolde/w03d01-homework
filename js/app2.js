@@ -16,7 +16,7 @@ $('document').ready(function () {
 	};
 
 
-	const pet = new Tomagotchi(1, 1, 1, 1);
+	const pet = new Tomagotchi();
 
 
 // //////////TIMER AND INCREASE METRICS//////////
