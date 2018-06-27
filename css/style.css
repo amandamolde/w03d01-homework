@@ -15,9 +15,12 @@ input {
 .darkRoom {
 	background-color: black;
 	width: 280px;
-	height: 280px;
+	height: 310px;
 	margin: 0 auto;
 }
-.img {
+img {
+	width: 280px;
+	height: 310px;
+	object-fit: contain;
 	margin: 0 auto;
 }
