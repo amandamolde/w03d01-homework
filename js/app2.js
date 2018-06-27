@@ -95,6 +95,10 @@ const timePasses = setInterval(timePassing, 1000);
 		if(pet.hunger > 1) {
 			pet.hunger --;
 			$('#hunger').text('Hunger: ' + pet.hunger);
+			$('.livePet').animateCss('pulse');
+			$('.livePet').animateCss('pulse', function() {
+				$('.livePet').removeClass("animated pulse");
+			});
 		}
 	});
 
@@ -102,11 +106,21 @@ const timePasses = setInterval(timePassing, 1000);
 // //////////////TURN OFF LIGHTS//////////////
 	$('#lights').on('click', (e) => {
 		if (lightToggle === false) {
-			$('.livePet').hide();
+
+			$('.livePet').animateCss('fadeOut', function() {
+				$('.livePet').removeClass("animated fadeOut");
+				$('.livePet').hide();
+				$('.darkRoom').show();
+				$('.darkRoom').animateCss('fadeIn', function() {
+					$('.darkRoom').removeClass("animated fadeIn");
+				});
+			});
+
+
 			$('#feed').hide();
 			$('#play').hide();
-			$('.darkRoom').show();
 			$('#lights').text("Wake Me Up");
+
 
 			if (pet.sleepiness > 1) {
 				pet.sleepiness --;
@@ -122,6 +136,10 @@ const timePasses = setInterval(timePassing, 1000);
 			$('#play').show();
 			$('#lights').text("Turn Lights Off");
 			$('.darkRoom').hide();
+			$('.livePet').animateCss('rollIn');
+			$('.livePet').animateCss('rollIn', function() {
+				$('.livePet').removeClass("animated rollIn");
+			});
 			lightToggle = false;
 		}
 	});
@@ -131,16 +149,40 @@ const timePasses = setInterval(timePassing, 1000);
 		if (pet.boredom > 1) {
 			pet.boredom --;
 			$('#boredom').text('Boredom: ' + pet.boredom);
+			$('.livePet').animateCss('bounce');
+			$('.livePet').animateCss('bounce', function() {
+				$('.livePet').removeClass("animated bounce");
+			});
 		}
 	});
 
+// /////EXTEND JQUERY TO STOP ANIMATIONS/////
+	$.fn.extend({
+  animateCss: function(animationName, callback) {
+    var animationEnd = (function(el) {
+      var animations = {
+        animation: 'animationend',
+        OAnimation: 'oAnimationEnd',
+        MozAnimation: 'mozAnimationEnd',
+        WebkitAnimation: 'webkitAnimationEnd',
+      };
 
+      for (var t in animations) {
+        if (el.style[t] !== undefined) {
+          return animations[t];
+        }
+      }
+    })(document.createElement('div'));
 
+    this.addClass('animated ' + animationName).one(animationEnd, function() {
+      $(this).removeClass('animated ' + animationName);
 
+      if (typeof callback === 'function') callback();
+    });
 
-
-
-
+    return this;
+  },
+});
 
 
 })
