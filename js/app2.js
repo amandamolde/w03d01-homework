@@ -32,7 +32,7 @@ $('#submitName').on('click', (e) => {
 		console.log(`It has been ${seconds} seconds`);
 		seconds ++;
 
-		if (seconds % 1 == 0) {
+		if (seconds % 5 == 0) {
 			pet.hunger ++;
 			$('#hunger').text('Hunger: ' + pet.hunger);
 			console.log(`Pet hunger increased at ${seconds}`);
@@ -66,7 +66,17 @@ $('#submitName').on('click', (e) => {
 			$('.buttons').hide();
 			$('.playAgain').show();
 		}
-	}
+
+		if (pet.age < 4) {
+			$('.livePet').attr('src', 'images/baby.png');
+		} else if (pet.age < 8) {
+			$('.livePet').attr('src', 'images/toddler.png');
+		} else if (pet.age < 12) {
+			$('.livePet').attr('src', 'images/teen.png');
+		} else if (pet.age < 16) {
+			$('.livePet').attr('src', 'images/adult.png')
+		}
+	};
 
 const timePasses = setInterval(timePassing, 1000);	
 
@@ -113,16 +123,6 @@ const timePasses = setInterval(timePassing, 1000);
 			lightToggle = false;
 		}
 	});
-
-// const decreaseSleepiness = () => {
-// 	if (pet.sleepiness > 1) {
-// 		setInterval(function () {
-// 			pet.sleepiness --;
-// 			$('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
-// 		}, 5*1000);
-// 	}
-// };
-
 
 // ///////////////PLAY WITH PET///////////////
 	$('#play').on('click', (e) => {
