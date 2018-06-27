@@ -20,9 +20,11 @@ $('document').ready(function () {
 
 
 // //////////TIMER AND INCREASE METRICS//////////
-$('#submitName').on('click', (e) => {
+$('form').on('submit', (e) => {
 
-	const $nameInput = $('input').val();
+	e.preventDefault();
+
+	const $nameInput = $('#input-box').val();
 	$(e.currentTarget).parent().remove();
 	const $name = $('<h1 id="name"></h1>').text($nameInput);
 	$('body').prepend($name);
