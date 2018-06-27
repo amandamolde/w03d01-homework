@@ -61,6 +61,7 @@ $('form').on('submit', (e) => {
 		if (pet.hunger >= 10 || pet.boredom >= 10 || pet.sleepiness >= 10) {
 			$('.deadPet').show();
 			$('.livePet').hide();
+			$('.darkRoom').hide();
 			console.log('Pet has died');
 			clearInterval(timePasses);
 			let deadMessage = $('<h1/>').text("Your Tomagotchi has died").css('color', 'red')
