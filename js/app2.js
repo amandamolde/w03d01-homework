@@ -4,6 +4,7 @@ $('document').ready(function () {
 	let lightToggle = false;
 	$('.darkRoom').hide();
 	$('.deadPet').hide();
+	$('.playAgain').hide();
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -23,7 +24,7 @@ $('#submitName').on('click', (e) => {
 
 	const $nameInput = $('input').val();
 	$(e.currentTarget).parent().remove();
-	const $name = $('<h1/>').text($nameInput);
+	const $name = $('<h1 id="name"></h1>').text($nameInput);
 	$('body').prepend($name);
 
 	const timePassing = () => {
@@ -31,7 +32,7 @@ $('#submitName').on('click', (e) => {
 		console.log(`It has been ${seconds} seconds`);
 		seconds ++;
 
-		if (seconds % 5 == 0) {
+		if (seconds % 1 == 0) {
 			pet.hunger ++;
 			$('#hunger').text('Hunger: ' + pet.hunger);
 			console.log(`Pet hunger increased at ${seconds}`);
@@ -58,14 +59,23 @@ $('#submitName').on('click', (e) => {
 		if (pet.hunger >= 10 || pet.boredom >= 10 || pet.sleepiness >= 10) {
 			$('.deadPet').show();
 			$('.livePet').hide();
-			console.log('Pet has died')
+			console.log('Pet has died');
 			clearInterval(timePasses);
+			let deadMessage = $('<h1/>').text("Your Tomagotchi has died").css('color', 'red')
+			$(deadMessage).appendTo('section');
+			$('.buttons').hide();
+			$('.playAgain').show();
 		}
 	}
 
 const timePasses = setInterval(timePassing, 1000);	
 
 });
+
+// /////////////////PLAY AGAIN/////////////////
+	$('#reset').on('click', (e) => {
+		location.reload();
+	});
 
 
 // //////////////////FEED PET//////////////////
