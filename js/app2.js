@@ -34,7 +34,7 @@ $('form').on('submit', (e) => {
 	$('body').prepend($name);
 
 	const timePassing = () => {
-		$('#time').text('Time: ' + seconds + ' s');
+		// $('#time').text('Time: ' + seconds + ' s');
 		// console.log(`It has been ${seconds} seconds`);
 		seconds ++;
 
