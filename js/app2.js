@@ -54,7 +54,7 @@ $('form').on('submit', (e) => {
 
 		$('#sleepinessProgress').css("width", (pet.sleepiness * 10)+ "%");
 
-		if (seconds % 1 == 0) {
+		if (seconds % 10 == 0) {
 			pet.boredom ++;
 			// $('#boredom').text('Boredom: ' + pet.boredom);
 			// console.log(`Pet boredom increased at ${seconds}`);
@@ -142,7 +142,7 @@ const timePasses = setInterval(timePassing, 1000);
 			$('#lights').text("Wake Me Up");
 
 			if (pet.sleepiness > 1) {
-				pet.sleepiness --;
+				pet.sleepiness = 1;
 			}
 
 			// const sleepPasses = setInterval(function () {
