@@ -54,7 +54,7 @@ $('form').on('submit', (e) => {
 
 		$('#sleepinessProgress').css("width", (pet.sleepiness * 10)+ "%");
 
-		if (seconds % 10 == 0) {
+		if (seconds % 1 == 0) {
 			pet.boredom ++;
 			// $('#boredom').text('Boredom: ' + pet.boredom);
 			// console.log(`Pet boredom increased at ${seconds}`);
@@ -69,12 +69,22 @@ $('form').on('submit', (e) => {
 		}
 
 		if (pet.hunger >= 10 || pet.boredom >= 10 || pet.sleepiness >= 10) {
+			
+			let causeOfDeath = '';
+			if (pet.hunger == 10) {
+				causeOfDeath = 'hunger';
+			} else if (pet.boredom == 10) {
+				causeOfDeath = 'boredom';
+			} else if (pet.sleepiness) {
+				causeOfDeath = 'sleepiness';
+			}
+
 			$('.deadPet').show();
 			$('.livePet').hide();
 			$('.darkRoom').hide();
 			// console.log('Pet has died');
 			clearInterval(timePasses);
-			let deadMessage = $('<h1/>').text(`${$nameInput} has died`).css('color', 'red')
+			let deadMessage = $('<h1/>').text(`${$nameInput} has died of ${causeOfDeath}`).css('color', 'red')
 			$(deadMessage).appendTo('section');
 			$('.buttons').hide();
 			$('.playAgain').show();
