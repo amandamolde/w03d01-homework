@@ -40,7 +40,7 @@ $('form').on('submit', (e) => {
 
 		if (seconds % 5 == 0) {
 			pet.hunger ++;
-			$('#hunger').text('Hunger: ' + pet.hunger);
+			// $('#hunger').text('Hunger: ' + pet.hunger);
 			// console.log(`Pet hunger increased at ${seconds}`);
 		}
 
@@ -48,7 +48,7 @@ $('form').on('submit', (e) => {
 
 		if (seconds % 15 == 0) {
 			pet.sleepiness ++;
-			$('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
+			// $('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
 			// console.log(`Pet sleepiness increased at ${seconds}`);
 		}
 
@@ -56,7 +56,7 @@ $('form').on('submit', (e) => {
 
 		if (seconds % 10 == 0) {
 			pet.boredom ++;
-			$('#boredom').text('Boredom: ' + pet.boredom);
+			// $('#boredom').text('Boredom: ' + pet.boredom);
 			// console.log(`Pet boredom increased at ${seconds}`);
 		}
 
@@ -105,7 +105,7 @@ const timePasses = setInterval(timePassing, 1000);
 	$('#feed').on('click', (e) => {
 		if(pet.hunger > 1) {
 			pet.hunger --;
-			$('#hunger').text('Hunger: ' + pet.hunger);
+			// $('#hunger').text('Hunger: ' + pet.hunger);
 			$('.livePet').animateCss('pulse');
 			$('.livePet').animateCss('pulse', function() {
 				$('.livePet').removeClass("animated pulse");
@@ -134,7 +134,7 @@ const timePasses = setInterval(timePassing, 1000);
 
 			if (pet.sleepiness > 1) {
 				pet.sleepiness --;
-				$('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
+				// $('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
 			}
 	
 
@@ -158,7 +158,7 @@ const timePasses = setInterval(timePassing, 1000);
 	$('#play').on('click', (e) => {
 		if (pet.boredom > 1) {
 			pet.boredom --;
-			$('#boredom').text('Boredom: ' + pet.boredom);
+			// $('#boredom').text('Boredom: ' + pet.boredom);
 			$('.livePet').animateCss('bounce');
 			$('.livePet').animateCss('bounce', function() {
 				$('.livePet').removeClass("animated bounce");
