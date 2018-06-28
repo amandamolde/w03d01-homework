@@ -5,6 +5,10 @@ $('document').ready(function () {
 	$('.darkRoom').hide();
 	$('.deadPet').hide();
 	$('.playAgain').hide();
+	let success = 2;
+	let info = 5;
+	let warning = 7;
+	let danger = 10;
 
 	class Tomagotchi {
 		constructor(hunger, sleepiness, boredom, age){
@@ -31,38 +35,44 @@ $('form').on('submit', (e) => {
 
 	const timePassing = () => {
 		$('#time').text('Time: ' + seconds + ' s');
-		console.log(`It has been ${seconds} seconds`);
+		// console.log(`It has been ${seconds} seconds`);
 		seconds ++;
 
 		if (seconds % 5 == 0) {
 			pet.hunger ++;
 			$('#hunger').text('Hunger: ' + pet.hunger);
-			console.log(`Pet hunger increased at ${seconds}`);
+			// console.log(`Pet hunger increased at ${seconds}`);
 		}
+
+		$('#hungerProgress').css("width", (pet.hunger * 10)+ "%");
 
 		if (seconds % 15 == 0) {
 			pet.sleepiness ++;
 			$('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
-			console.log(`Pet sleepiness increased at ${seconds}`);
+			// console.log(`Pet sleepiness increased at ${seconds}`);
 		}
+
+		$('#sleepinessProgress').css("width", (pet.sleepiness * 10)+ "%");
 
 		if (seconds % 10 == 0) {
 			pet.boredom ++;
 			$('#boredom').text('Boredom: ' + pet.boredom);
-			console.log(`Pet boredom increased at ${seconds}`);
+			// console.log(`Pet boredom increased at ${seconds}`);
 		}
+
+		$('#boredomProgress').css("width", (pet.boredom * 10)+ "%");
 
 		if (seconds % 30 == 0) {
 			pet.age ++;
 			$('#age').text('Age: ' + pet.age);
-			console.log(`Pet age increased at ${seconds}`);
+			// console.log(`Pet age increased at ${seconds}`);
 		}
 
 		if (pet.hunger >= 10 || pet.boredom >= 10 || pet.sleepiness >= 10) {
 			$('.deadPet').show();
 			$('.livePet').hide();
 			$('.darkRoom').hide();
-			console.log('Pet has died');
+			// console.log('Pet has died');
 			clearInterval(timePasses);
 			let deadMessage = $('<h1/>').text(`${$nameInput} has died`).css('color', 'red')
 			$(deadMessage).appendTo('section');
@@ -81,7 +91,7 @@ $('form').on('submit', (e) => {
 		}
 	};
 
-const timePasses = setInterval(timePassing, 1000);	
+const timePasses = setInterval(timePassing, 1000);
 
 });
 
@@ -102,7 +112,6 @@ const timePasses = setInterval(timePassing, 1000);
 			});
 		}
 	});
-
 
 // //////////////TURN OFF LIGHTS//////////////
 	$('#lights').on('click', (e) => {
@@ -156,6 +165,7 @@ const timePasses = setInterval(timePassing, 1000);
 			});
 		}
 	});
+
 
 // /////EXTEND JQUERY TO STOP ANIMATIONS/////
 	$.fn.extend({
