@@ -66,6 +66,16 @@ $('form').on('submit', (e) => {
 			pet.age ++;
 			$('#age').text('Age: ' + pet.age);
 			// console.log(`Pet age increased at ${seconds}`);
+			if (pet.age == 3) {
+				$('.livePet').attr('src', 'images/toddler.png');
+				alert(`${$nameInput} has morphed into a toddler!`);
+			} else if (pet.age == 6) {
+				$('.livePet').attr('src', 'images/teen.png');
+				alert(`${$nameInput} has morphed into a teen!`);
+			} else if (pet.age == 9) {
+				$('.livePet').attr('src', 'images/adult.png')
+				alert(`${$nameInput} has morphed into an adult!`);
+			}
 		}
 
 		if (pet.hunger >= 10 || pet.boredom >= 10 || pet.sleepiness >= 10) {
@@ -90,15 +100,26 @@ $('form').on('submit', (e) => {
 			$('.playAgain').show();
 		}
 
-		if (pet.age < 4) {
-			$('.livePet').attr('src', 'images/baby.png');
-		} else if (pet.age < 8) {
-			$('.livePet').attr('src', 'images/toddler.png');
-		} else if (pet.age < 12) {
-			$('.livePet').attr('src', 'images/teen.png');
-		} else if (pet.age < 16) {
-			$('.livePet').attr('src', 'images/adult.png')
-		}
+		// if (pet.age < 4) {
+		// 	$('.livePet').attr('src', 'images/baby.png');
+		// } else if (pet.age < 8) {
+		// 	$('.livePet').attr('src', 'images/toddler.png');
+		// } else if (pet.age < 12) {
+		// 	$('.livePet').attr('src', 'images/teen.png');
+		// } else if (pet.age < 16) {
+		// 	$('.livePet').attr('src', 'images/adult.png')
+		// }
+
+		// if (pet.age == 3) {
+		// 	$('.livePet').attr('src', 'images/toddler.png');
+		// 	alert(`${nameInput} has morphed into a toddler!`);
+		// } else if (pet.age == 6) {
+		// 	$('.livePet').attr('src', 'images/teen.png');
+		// 	alert(`${nameInput} has morphed into a teen!`);
+		// } else if (pet.age == 9) {
+		// 	$('.livePet').attr('src', 'images/adult.png')
+		// 	alert(`${nameInput} has morphed into an adult!`);
+		// }
 	};
 
 const timePasses = setInterval(timePassing, 1000);
