@@ -131,12 +131,18 @@ const timePasses = setInterval(timePassing, 1000);
 			$('#play').hide();
 			$('#lights').text("Wake Me Up");
 
-
 			if (pet.sleepiness > 1) {
 				pet.sleepiness --;
-				// $('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
 			}
-	
+
+			// const sleepPasses = setInterval(function () {
+			// 	if (pet.sleepiness > 1) {
+			// 		pet.sleepiness --;
+			// 		// $('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
+			// 	}
+			// }, 4*1000);
+
+			// clearInterval(sleepPasses);
 
 			lightToggle = true;
 
@@ -150,6 +156,7 @@ const timePasses = setInterval(timePassing, 1000);
 			$('.livePet').animateCss('rollIn', function() {
 				$('.livePet').removeClass("animated rollIn");
 			});
+
 			lightToggle = false;
 		}
 	});
