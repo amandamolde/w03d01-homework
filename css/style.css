@@ -1,6 +1,7 @@
 body {
 	text-align: center;
-	color: #162D57;
+	color: #08447D;
+	margin: 50px 5px;
 }
 .darkRoom {
 	background-color: black;
@@ -26,4 +27,16 @@ img {
 #play, #boredomProgress {
 	background-color: #F6C244;
 	border-style: none;
+}
+#input-box {
+	font-size: 18px;
+	padding: 3px;
+	border-width: 2.5px;
+	vertical-align: bottom;
+}
+.row {
+	margin: 10px 0px;
+}
+.col-sm-4 {
+	margin: 5px 0px;
 }
