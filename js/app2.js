@@ -52,6 +52,14 @@ $('form').on('submit', (e) => {
 			// console.log(`Pet sleepiness increased at ${seconds}`);
 		}
 
+		if (lightToggle == true && pet.sleepiness > 1) {
+			if (seconds % 4 == 0) {
+				pet.sleepiness --;
+				// console.log(lightToggle);
+				// console.log(`Pet sleepiness decreased at ${seconds}`);
+			}
+		}
+
 		$('#sleepinessProgress').css("width", (pet.sleepiness * 10)+ "%");
 
 		if (seconds % 10 == 0) {
@@ -141,9 +149,9 @@ const timePasses = setInterval(timePassing, 1000);
 			$('#play').hide();
 			$('#lights').text("Wake Me Up");
 
-			if (pet.sleepiness > 1) {
-				pet.sleepiness --;
-			}
+			// if (pet.sleepiness > 1) {
+			// 	pet.sleepiness --;
+			// }
 
 			lightToggle = true;
 
