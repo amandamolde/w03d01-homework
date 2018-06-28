@@ -15,3 +15,15 @@ img {
 	object-fit: contain;
 	margin: 0 auto;
 }
+#feed, #hungerProgress {
+	background-color: #53A451;
+	border-style: none;
+}
+#lights, #sleepinessProgress {
+	background-color: #49A0B5;
+	border-style: none;
+}
+#play, #boredomProgress {
+	background-color: #F6C244;
+	border-style: none;
+}
