@@ -39,7 +39,7 @@ $('form').on('submit', (e) => {
 		seconds ++;
 
 // Original was 5 second interval
-		if (seconds % 2.5 == 0) {
+		if (seconds % 3 == 0) {
 			pet.hunger ++;
 			// $('#hunger').text('Hunger: ' + pet.hunger);
 			// console.log(`Pet hunger increased at ${seconds}`);
@@ -48,7 +48,7 @@ $('form').on('submit', (e) => {
 		$('#hungerProgress').css("width", (pet.hunger * 10)+ "%");
 
 // Original was 15 second interval
-		if (seconds % 7.5 == 0) {
+		if (seconds % 5 == 0) {
 			pet.sleepiness ++;
 			// $('#sleepiness').text('Sleepiness: ' + pet.sleepiness);
 			// console.log(`Pet sleepiness increased at ${seconds}`);
@@ -56,7 +56,7 @@ $('form').on('submit', (e) => {
 
 // Original was 4 second interval
 		if (lightToggle == true && pet.sleepiness > 1) {
-			if (seconds % 2 == 0) {
+			if (seconds % 4 == 0) {
 				pet.sleepiness --;
 				// console.log(lightToggle);
 				// console.log(`Pet sleepiness decreased at ${seconds}`);
@@ -66,7 +66,7 @@ $('form').on('submit', (e) => {
 		$('#sleepinessProgress').css("width", (pet.sleepiness * 10)+ "%");
 
 // Original was 10 second interval
-		if (seconds % 5 == 0) {
+		if (seconds % 3.5 == 0) {
 			pet.boredom ++;
 			// $('#boredom').text('Boredom: ' + pet.boredom);
 			// console.log(`Pet boredom increased at ${seconds}`);
@@ -75,7 +75,7 @@ $('form').on('submit', (e) => {
 		$('#boredomProgress').css("width", (pet.boredom * 10)+ "%");
 
 // Original was 30 second interval
-		if (seconds % 15 == 0) {
+		if (seconds % 6 == 0) {
 			pet.age ++;
 			$('#age').text('Age: ' + pet.age);
 			// console.log(`Pet age increased at ${seconds}`);
